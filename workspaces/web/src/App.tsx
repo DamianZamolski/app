@@ -1,9 +1,9 @@
-import { useEffect } from 'react';
+import useMount from './useMount';
 import post from './post';
 
 export default function App() {
-  useEffect(() => {
+  useMount(() => {
     post('http://localhost:3000');
-  }, []);
+  });
   return <div>App</div>;
 }
