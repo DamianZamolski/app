@@ -1,0 +1,19 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "ts-node-dev src/app.ts"
+  },
+  "dependencies": {
+    "@koa/cors": "",
+    "koa": "",
+    "koa-body": "",
+    "koa-router": ""
+  },
+  "devDependencies": {
+    "@types/koa": "",
+    "@types/koa__cors": "",
+    "@types/koa-router": "",
+    "ts-node-dev": ""
+  }
+}
