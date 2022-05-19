@@ -1,14 +1,15 @@
 import Koa from 'koa';
 import cors from '@koa/cors';
 import body from 'koa-body';
-import Router from 'koa-router';
+import Router from '@koa/router';
 
 const router = new Router();
-router.post('name', '/', async (ctx) => {
-  console.debug(ctx.request);
+router.get('name', '/', async (ctx) => {
   ctx.response.status = 200;
 });
 
+const middlewares = [cors(), body(), router.routes()];
+
 const app = new Koa();
-app.use(cors()).use(body()).use(router.routes()).use(router.allowedMethods());
+middlewares.forEach((middleware) => app.use(middleware));
 app.listen(3000);

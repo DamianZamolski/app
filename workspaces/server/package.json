@@ -6,14 +6,15 @@
   },
   "dependencies": {
     "@koa/cors": "",
+    "@koa/router": "",
     "koa": "",
     "koa-body": "",
-    "koa-router": ""
+    "mongodb": ""
   },
   "devDependencies": {
     "@types/koa": "",
     "@types/koa__cors": "",
-    "@types/koa-router": "",
+    "@types/koa__router": "",
     "ts-node-dev": ""
   }
 }
