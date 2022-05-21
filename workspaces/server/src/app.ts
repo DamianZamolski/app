@@ -3,13 +3,27 @@ import cors from '@koa/cors';
 import body from 'koa-body';
 import Router from '@koa/router';
 import { MongoClient } from 'mongodb';
+import { Pool } from 'pg';
 
-const client = new MongoClient('mongodb://127.0.0.1:27017');
-client.connect();
+const mongodb = new MongoClient('mongodb://localhost:27017');
+//mongodb.connect();
+
+const postgresql = new Pool({
+  connectionString: 'postgresql://dz:dz@localhost:5432/dz',
+});
 
 const router = new Router();
-router.get('name', '/', async (context) => {
-  context.body = await client.db('dz').collection('champions').find().toArray();
+router.get('name', '/mongodb', async (context) => {
+  context.body = await mongodb
+    .db('dz')
+    .collection('champions')
+    .find()
+    .toArray();
+});
+
+router.get('name', '/postgresql', async (context) => {
+  const { rows } = await postgresql.query('select * from champions');
+  context.body = rows;
 });
 
 const middlewares = [cors(), body(), router.routes()];

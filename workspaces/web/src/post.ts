@@ -1,7 +1,5 @@
-export default async function post(url: string, body?: any) {
-  const response = await fetch(url, {
-    method: 'post',
-    body: JSON.stringify(body),
-  });
-  return response;
+import request from './request';
+
+export default function post(url: string, body?: any) {
+  return request('post', url, { body });
 }

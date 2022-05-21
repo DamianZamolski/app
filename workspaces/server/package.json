@@ -2,19 +2,21 @@
   "name": "server",
   "version": "1.0.0",
   "scripts": {
-    "dev": "ts-node-dev src/app.ts"
+    "dev": "ts-node-dev --respawn src/app.ts"
   },
   "dependencies": {
     "@koa/cors": "",
     "@koa/router": "",
     "koa": "",
     "koa-body": "",
-    "mongodb": ""
+    "mongodb": "",
+    "pg": ""
   },
   "devDependencies": {
     "@types/koa": "",
     "@types/koa__cors": "",
     "@types/koa__router": "",
+    "@types/pg": "",
     "ts-node-dev": ""
   }
 }

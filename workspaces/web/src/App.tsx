@@ -1,9 +1,9 @@
 import useMount from './useMount';
-import post from './post';
+import get from './get';
 
 export default function App() {
   useMount(() => {
-    post('http://localhost:3000');
+    get('http://localhost:3000/postgresql');
   });
   return <div>App</div>;
 }
