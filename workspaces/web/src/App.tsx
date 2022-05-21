@@ -1,9 +1,9 @@
 import useMount from './useMount';
-import get from './get';
+import post from './post';
 
 export default function App() {
   useMount(() => {
-    get('http://localhost:3000/postgresql');
+    post('http://localhost:3000/champions', { name: 'dupa' });
   });
   return <div>App</div>;
 }

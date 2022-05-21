@@ -7,6 +7,7 @@
   "dependencies": {
     "@koa/cors": "",
     "@koa/router": "",
+    "kafkajs": "^2.0.0",
     "koa": "",
     "koa-body": "",
     "mongodb": "",
