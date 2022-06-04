@@ -16,7 +16,6 @@
     "jest": "",
     "jest-environment-jsdom": "",
     "prettier": "",
-    "process": "^0.11.10",
     "ts-jest": "",
     "typescript": ""
   }

@@ -1,5 +1,5 @@
 test:
-  image: cypress/base
+  image: cypress/base:16.5.0
   script:
     - npm ci
     - npm run dev -w web &
