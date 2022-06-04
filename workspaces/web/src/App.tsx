@@ -1,9 +1,12 @@
-import useMount from './useMount';
-import post from './post';
+import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
+import Home from './Home';
 
 export default function App() {
-  useMount(() => {
-    post('http://localhost:3000/champions', { name: 'dupa' });
-  });
-  return <div>App</div>;
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }

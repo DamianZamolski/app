@@ -5,6 +5,13 @@ import Router from '@koa/router';
 import { MongoClient } from 'mongodb';
 import { Pool } from 'pg';
 import { Kafka } from 'kafkajs';
+import websockify from 'koa-websocket';
+import { graphqlHTTP } from 'koa-graphql';
+import { buildSchema } from 'graphql';
+
+type Database = 'mongodb' | 'postgresql';
+
+let database: Database = 'mongodb';
 
 const kafka = new Kafka({ brokers: ['localhost:9092'], clientId: 'dz' });
 const producer = kafka.producer();
@@ -18,6 +25,19 @@ const postgresql = new Pool({
 });
 
 const router = new Router();
+
+const schema = buildSchema('type Query { hello: String }');
+const rootValue = { hello: () => 'Hello World!' };
+router.all('graphql', '/graphql', graphqlHTTP({ schema, rootValue }));
+
+router.get('database', '/database', (context) => {
+  context.response.body = database;
+});
+router.put('database', '/database', (context) => {
+  database = context.request.body;
+  context.response.status = 200;
+});
+
 router.post('champions', '/champions', async (context) => {
   await producer.send({
     topic: 'dz',
@@ -25,6 +45,7 @@ router.post('champions', '/champions', async (context) => {
   });
   context.body = '';
 });
+
 router.get('name', '/mongodb', async (context) => {
   //context.body = await mongodb
   //.db('dz')
@@ -38,12 +59,17 @@ router.get('name', '/postgresql', async (context) => {
   context.body = rows;
 });
 
-const middlewares = [cors(), body(), router.routes()];
+const middlewares = [cors(), body({ jsonStrict: false }), router.routes()];
 
-const app = new Koa();
+const app = websockify(new Koa());
 middlewares.forEach((middleware) => app.use(middleware));
+app.ws.use((context) =>
+  context.websocket.on('message', (message) =>
+    console.debug(message.toString())
+  )
+);
 app.listen(3000);
-
+/*
 (async () => {
   await producer.connect();
   await consumer.connect();
@@ -54,3 +80,4 @@ app.listen(3000);
     },
   });
 })();
+*/

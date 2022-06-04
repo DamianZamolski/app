@@ -3,15 +3,20 @@
   "version": "1.0.0",
   "scripts": {
     "format": "prettier --write",
-    "test": "jest"
+    "test": "jest",
+    "cypress": "cypress",
+    "e2e": "cypress run"
   },
   "workspaces": [
     "workspaces/*"
   ],
   "devDependencies": {
     "@types/jest": "",
+    "cypress": "",
     "jest": "",
+    "jest-environment-jsdom": "",
     "prettier": "",
+    "process": "^0.11.10",
     "ts-jest": "",
     "typescript": ""
   }

@@ -7,16 +7,20 @@
   "dependencies": {
     "@koa/cors": "",
     "@koa/router": "",
-    "kafkajs": "^2.0.0",
+    "kafkajs": "",
     "koa": "",
     "koa-body": "",
+    "koa-graphql": "",
+    "koa-websocket": "",
     "mongodb": "",
-    "pg": ""
+    "pg": "",
+    "redis": ""
   },
   "devDependencies": {
     "@types/koa": "",
     "@types/koa__cors": "",
     "@types/koa__router": "",
+    "@types/koa-websocket": "",
     "@types/pg": "",
     "ts-node-dev": ""
   }

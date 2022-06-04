@@ -1,0 +1,6 @@
+test:
+  image: node
+  script:
+    - npm ci
+    - npm run dev -w web &
+    - npm run e2e

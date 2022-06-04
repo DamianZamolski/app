@@ -2,13 +2,16 @@
   "name": "web",
   "version": "1.0.0",
   "scripts": {
-    "dev": "parcel src/index.html"
+    "dev": "parcel src/index/index.html"
   },
   "dependencies": {
     "react": "18",
-    "react-dom": ""
+    "react-dom": "",
+    "react-router-dom": ""
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "",
+    "@testing-library/react": "",
     "@types/react": "",
     "@types/react-dom": "",
     "parcel": ""
